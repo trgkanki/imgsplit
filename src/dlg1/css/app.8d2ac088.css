@@ -1,0 +1,1 @@
+*{box-sizing:border-box}#app,body,html{margin:0;padding:0;height:100%}#app{display:flex;flex-direction:column;padding:1em}#app .canvas-container{position:relative;flex:1;border:1px solid #000;background:#ddd}#app .canvas-container .downscale{max-width:95%}#app .canvas-container .overlay{position:absolute;top:0}#app .button-container{text-align:right;font-size:2em}

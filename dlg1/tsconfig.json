@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "skipLibCheck": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -18,7 +17,7 @@
     ],
     "paths": {
       "@/*": [
-        "jssrc/*"
+        "src/*"
       ]
     },
     "lib": [
@@ -29,17 +28,13 @@
     ]
   },
   "include": [
-    "jssrc/**/*.ts",
-    "jssrc/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-  ],
-  "linterOptions": {
-    "exclude": [
-      "node_modules/**/*"
-    ]
-  }
+    "node_modules"
+  ]
 }

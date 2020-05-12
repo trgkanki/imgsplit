@@ -3,5 +3,6 @@ node_modules/
 *.css
 *.manifest
 *.min.js
+*.*.js
 
 webpack.config.js
