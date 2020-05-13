@@ -30,7 +30,7 @@ def imgsplit_retSplitImage(ret):
 
     htmlFragments = []
     for imgDataUri in ret:
-        htmlFragments.append('<img src="%s">' % imgDataUri)
+        htmlFragments.append('<div><img src="%s"></div>' % imgDataUri)
 
     clip = mw.app.clipboard()
     mime = QMimeData()
