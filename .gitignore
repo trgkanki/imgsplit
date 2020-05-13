@@ -422,3 +422,7 @@ $RECYCLE.BIN/
 # anki_template
 dist.zip
 meta.json
+
+src/dlg1
+!src/dlg1/.gitkeep
+
