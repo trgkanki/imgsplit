@@ -10,9 +10,9 @@ export function splitImage (img: Jimp, separatorYList: number[]): Jimp[] {
   separatorYList = separatorYList.slice().sort()
 
   for (const y1 of separatorYList) {
-    if (y1 !== y0) imgs.push(view.crop(0, y0, imgW, y1 - y0).autocrop().toJimpWithPad(20))
+    if (y1 !== y0) imgs.push(view.crop(0, y0, imgW, y1 - y0).autocrop().toJimpWithPad(8))
     y0 = y1
   }
-  if (imgH !== y0) imgs.push(view.crop(0, y0, imgW, imgH - y0).autocrop().toJimpWithPad(20))
+  if (imgH !== y0) imgs.push(view.crop(0, y0, imgW, imgH - y0).autocrop().toJimpWithPad(8))
   return imgs
 }
