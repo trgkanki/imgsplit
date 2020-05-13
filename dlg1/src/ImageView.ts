@@ -63,7 +63,11 @@ class ImageView {
       let lb = false
       const maxIndex = this.dataIndex(w, cropY0)
       for (let index = this.dataIndex(0, cropY0); index < maxIndex; index += 4) {
-        if (data.readUInt32BE(index) !== 0xFFFFFFFF) {
+        if (
+          data[index + 0] < 220 ||
+          data[index + 1] < 220 ||
+          data[index + 2] < 220
+        ) {
           lb = true
           break
         }
@@ -77,7 +81,11 @@ class ImageView {
       let lb = false
       const maxIndex = this.dataIndex(w, cropY1)
       for (let index = this.dataIndex(0, cropY1); index < maxIndex; index += 4) {
-        if (data.readUInt32BE(index) !== 0xFFFFFFFF) {
+        if (
+          data[index + 0] < 220 ||
+          data[index + 1] < 220 ||
+          data[index + 2] < 220
+        ) {
           lb = true
           break
         }
@@ -92,7 +100,11 @@ class ImageView {
       let lb = false
       const maxIndex = this.dataIndex(cropX0, h)
       for (let index = this.dataIndex(cropX0, 0); index < maxIndex; index += pitch) {
-        if (data.readUInt32BE(index) !== 0xFFFFFFFF) {
+        if (
+          data[index + 0] < 220 ||
+          data[index + 1] < 220 ||
+          data[index + 2] < 220
+        ) {
           lb = true
           break
         }
@@ -106,7 +118,11 @@ class ImageView {
       let lb = false
       const maxIndex = this.dataIndex(cropX1, h)
       for (let index = this.dataIndex(cropX1, 0); index < maxIndex; index += pitch) {
-        if (data.readUInt32BE(index) !== 0xFFFFFFFF) {
+        if (
+          data[index + 0] < 220 ||
+          data[index + 1] < 220 ||
+          data[index + 2] < 220
+        ) {
           lb = true
           break
         }
