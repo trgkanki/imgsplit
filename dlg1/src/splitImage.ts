@@ -7,7 +7,8 @@ export function splitImage (img: Jimp, separatorYList: number[]): Jimp[] {
   const { width: imgW, height: imgH } = img.bitmap
   const view = new ImageView(img)
 
-  separatorYList = separatorYList.slice().sort()
+  separatorYList = separatorYList.slice()
+  separatorYList.sort((a, b) => a - b)
 
   for (const y1 of separatorYList) {
     if (y1 !== y0) imgs.push(view.crop(0, y0, imgW, y1 - y0).autocrop().toJimpWithPad(8))
