@@ -1,12 +1,14 @@
 <template lang='pug'>
 #app
   .canvas-container
-    canvas.downscale.overlay(ref='separatorCanvas', @click='toggleSeparator')
+    canvas.downscale.overlay(ref='separatorCanvas', @mousemove='updateCursor', @click='toggleSeparator')
     canvas.downscale(ref='imgCanvas')
 
   .button-container
-    button(@click='onSubmit') OK
-    button(@click='onCancel') Cancel
+    button(v-shortkey="['s']", @shortkey='splitAtCursor', disabled) Split at cursor (S)
+    .hpadding
+    button(v-shortkey="['ctrl', 'enter']", @shortkey='onSubmit', @click='onSubmit') OK
+    button(v-shortkey="['esc']", @shortkey='onCancel', @click='onCancel') Cancel
 </template>
 
 <script lang="ts">
@@ -20,6 +22,7 @@ import { splitImage } from './splitImage'
 export default class extends Vue {
   private separatorList: number[] = []
   private image: Jimp | null = null
+  private cursorY = -1
 
   mounted () {
     // Sleep 100ms until pycmd function is registered
@@ -65,9 +68,17 @@ export default class extends Vue {
     this.separatorList = []
   }
 
-  toggleSeparator (e: any) {
+  updateCursor (e: MouseEvent) {
+    this.cursorY = e.offsetY
+  }
+
+  toggleSeparator (e: { offsetY: number }) {
     const separatorList = this.separatorList
-    const clickedY = (e.offsetY / e.target.offsetHeight * e.target.height) | 0
+    const target = this.$refs.separatorCanvas as HTMLCanvasElement
+
+    const clickedY = (e.offsetY / target.offsetHeight * target.height) | 0
+    if (clickedY < 0 || clickedY >= target.height) return // OOB
+
     for (let i = 0; i < separatorList.length; i++) {
       const y = separatorList[i]
       if (Math.abs(y - clickedY) < 10) {
@@ -76,6 +87,10 @@ export default class extends Vue {
       }
     }
     separatorList.push(clickedY)
+  }
+
+  splitAtCursor () {
+    this.toggleSeparator({ offsetY: this.cursorY })
   }
 
   @Watch('separatorList')
@@ -132,6 +147,11 @@ html, body, #app {
     text-align: right;
     font-size: 2em;
   }
+}
+
+.hpadding {
+  display: inline-block;
+  width: 2em;
 }
 
 </style>
