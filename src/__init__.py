@@ -64,3 +64,5 @@ def onLoadNote(self, focusTo=None):
 
 
 Editor.loadNote = wrap(Editor.loadNote, onLoadNote, "after")
+
+

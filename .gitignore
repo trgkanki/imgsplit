@@ -426,3 +426,6 @@ meta.json
 src/dlg1
 !src/dlg1/.gitkeep
 
+# .min.js is a compiled thing
+*.min.js
+*.js.map
