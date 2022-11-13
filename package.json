@@ -43,7 +43,7 @@
     "vue": "^2.6.11",
     "walkdir": "^0.4.1",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-env": "^0.8.0"
   },
   "husky": {
